@@ -1,0 +1,147 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>410</x><y>0</y><w>260</w><h>130</h></coordinates><panel_attributes>WorldOfMastermind
+-
++run()
+
+-
+The run method is responsible 
+for running the software and initialising other 
+necessary objects.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>600</y><w>290</w><h>220</h></coordinates><panel_attributes>Game
+-
+-playerAttempts&lt;playerName: str, attemptsLeft: int&gt;
+-codeMarbles: CodeMarbles
+-activePlayers&lt;playerName: str, &lt;code: str, feedack: str&gt;&gt;
+
+-
++startGame()
+
+-
+activePlayers is a nested dictionary because the
+key is the Player and the value is a dictionary
+which stores all of their previous guesses and
+corresponding feedbback. Player attempts is a
+dictionary and the key is the player, and the value
+is the numer of remaining attempts. </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>930</y><w>310</w><h>180</h></coordinates><panel_attributes>DecodingBoard
+-
+-setCodes&lt;playerName: str, code: str&gt;
+
+-
++setPlayerCodes()
++getPlayerCodes(): string
+
+-
+setPlayerCodes loops through all players
+in active game and sets the next players code.
+getPlayerCode will return the code for a specific user. </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>930</x><y>930</y><w>310</w><h>180</h></coordinates><panel_attributes>/Player/
+-
+-Name: string
+
+-
+/+guessCode(): string/
+/+setCode(): string/
++getName(): string
+-
+
+Each player will have the ability to guessCode() and
+also setCode(). Get name allows access to the Player's
+name. </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>120</y><w>40</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>810</y><w>40</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>1040</y><w>260</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=2..4</panel_attributes><additional_attributes>10;10;240;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>780</x><y>1380</y><w>280</w><h>190</h></coordinates><panel_attributes>/HumanPlayer/
+-
+-totalScore: int
+-gamesPlayed: int
+
+-
++guessCode(): string
++setCode(): string
+-
+HumanPlayer needs a totalScore stored and 
+gamesPlayed to determine a winner and to
+be displayed on the scoreboard. The HumanPlayer
+will override the methods guessCode()
+and setCode() for unique implementation. </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1170</x><y>1380</y><w>280</w><h>160</h></coordinates><panel_attributes>/ComputerPlayer/
+-
+
+-
++guessCode(): string
++setCode(): string
+
+-
+The ComputerPlayer will override the methods 
+guessCode() and setCode() for unique 
+implementation. </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1490</x><y>930</y><w>350</w><h>210</h></coordinates><panel_attributes>Feedback
+-
+
+-
++setKeypeg(): string
+
+-
+setKeypeg loops through each marble in the
+player's code  and checks if the marble is in the same
+position and also if it is in the correct code. The keypegs
+are returned as characters as apart of their feedback, 
+instead of their own class because it would over complicate an
+already over complicated code in order to represent something 
+conceptually simple. 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1600</x><y>750</y><w>50</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1..*
+</panel_attributes><additional_attributes>10;10;10;180</additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>1100</y><w>220</w><h>300</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>200;10;200;150;10;150;10;280</additional_attributes></element><element><id>Relation</id><coordinates><x>1090</x><y>1240</y><w>250</w><h>160</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>10;10;230;10;230;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>250</y><w>330</w><h>240</h></coordinates><panel_attributes>Menu
+-
+-UserDatabase[]: list
+
+-
++registerUser()
++scoreboard()
++play()
++quit()
+
+-
+Stores the menu information for the sotware.
+The player list is updated via the registerUser method.
+The scoreboard will print a list of current scores. 
+The play method will create a new instance of Menu 
+and quit will exit the software. </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>970</y><w>240</w><h>160</h></coordinates><panel_attributes>Code
+-
+-code: string
+
+-
+-getCode(): string
+
+-
+the code class was created to further loose
+coupling between the code and game class. 
+getCode returns the code as a string.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>1260</y><w>230</w><h>190</h></coordinates><panel_attributes>CodeMarbles
+-
+-codeMarbles[]: chars
+
+-
++isValidCodeMarble(): bool
++getCodeMarbles(): list
+
+-
+codeMarbles contains a list of valid
+marble colours, which isValidCodeMarble
+checks to validate the player's code. 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>480</y><w>50</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1..*</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1490</x><y>600</y><w>250</w><h>160</h></coordinates><panel_attributes>Attempt
+-
+-feeback: object
+
+-
++getAttempt(): string
+
+-
+This is to keep track of player's guesses and 
+display it in the Feedack. </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>240</x><y>1040</y><w>170</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1..*</panel_attributes><additional_attributes>150;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>110</x><y>1120</y><w>50</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1..*</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>1080</x><y>680</y><w>430</w><h>270</h></coordinates><panel_attributes>lt=-&gt;
+m1=0
+m2= 10
+makes &gt;</panel_attributes><additional_attributes>10;250;10;10;410;10</additional_attributes></element></diagram>
