@@ -16,6 +16,10 @@ class ComputerPlayer(Player):
         super().__init__(name)
 
     def guessCode(self, codeMarbles):
+        """
+        This function randomly selects 4 charactes from the array of valid characters,
+        and appends them to a string named guess.
+        """
         guess = ""
         
         for _ in range(4):
@@ -24,6 +28,10 @@ class ComputerPlayer(Player):
         return guess
 
     def setCode(self, codeMarbles):
+        """
+        This function randomly selects 4 charactes from the array of valid characters,
+        and appends them to a string named code.
+        """
         code = ""
         
         for _ in range(4):
